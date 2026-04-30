@@ -207,7 +207,7 @@ wheels = [
 
 [[package]]
 name = "longlink"
-version = "0.0.4"
+version = "0.0.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "alembic" },
@@ -221,10 +221,38 @@ dependencies = [
     { name = "uvicorn" },
     { name = "xmltodict" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/6e/b5/013a465f29ce37c735ac71ef3c246ffa1bab69c17aca9760b47266306e81/longlink-0.0.4.tar.gz", hash = "sha256:c10ad27608341a8cdbc28e3f881b9b4a6efc1b7fbad3bb86ef714b85760439cf", size = 83600, upload-time = "2026-04-29T20:34:15.151Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e0/a9/55a7b67862df89675177c9929085df1cd1f052f2afba2892c41ba52f06f7/longlink-0.0.5.tar.gz", hash = "sha256:35d0fe5ab40d47498da473c16a99d6ea1590e3328dd10583599ab49bc982c45d", size = 82848, upload-time = "2026-04-30T12:04:49.456Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/36/e0/324eaea5219e6371fc2500c70528804cee7f64a9b23e7dde7dfb87ca1bae/longlink-0.0.4-py3-none-any.whl", hash = "sha256:7729897d7cc263fc3f86b77b8fba42bb36a91f7ecf1cbd2194a66739a56e2cee", size = 24862, upload-time = "2026-04-29T20:34:13.962Z" },
+    { url = "https://files.pythonhosted.org/packages/53/04/786eba7fc503df27a02ce093475aee2b7871b4ea2bceaf4ddddcad66ace3/longlink-0.0.5-py3-none-any.whl", hash = "sha256:7952815e8fafb9efba28c4d568323105ed6ceeef683e7718c90a346e165d4231", size = 24432, upload-time = "2026-04-30T12:04:47.874Z" },
 ]
+
+[[package]]
+name = "longlink-sample"
+version = "0.0.0"
+source = { editable = "." }
+dependencies = [
+    { name = "fastapi" },
+    { name = "longlink" },
+    { name = "uvicorn" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "isort" },
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi" },
+    { name = "isort", marker = "extra == 'dev'" },
+    { name = "longlink" },
+    { name = "pytest", marker = "extra == 'dev'" },
+    { name = "pytest-asyncio", marker = "extra == 'dev'" },
+    { name = "uvicorn" },
+]
+provides-extras = ["dev"]
 
 [[package]]
 name = "mako"
@@ -469,34 +497,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/82/ed/0301aeeac3e5353ef
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/d7/1959b9648791274998a9c3526f6d0ec8fd2233e4d4acce81bbae76b44b2a/python_dotenv-1.2.2-py3-none-any.whl", hash = "sha256:1d8214789a24de455a8b8bd8ae6fe3c6b69a5e3d64aa8a8e5d68e694bbcb285a", size = 22101, upload-time = "2026-03-01T16:00:25.09Z" },
 ]
-
-[[package]]
-name = "sampleapp"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "fastapi" },
-    { name = "longlink" },
-    { name = "uvicorn" },
-]
-
-[package.optional-dependencies]
-dev = [
-    { name = "isort" },
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "fastapi" },
-    { name = "isort", marker = "extra == 'dev'" },
-    { name = "longlink" },
-    { name = "pytest", marker = "extra == 'dev'" },
-    { name = "pytest-asyncio", marker = "extra == 'dev'" },
-    { name = "uvicorn" },
-]
-provides-extras = ["dev"]
 
 [[package]]
 name = "sqlalchemy"
