@@ -4,6 +4,27 @@ Internal ordering system for office hardware: keyboards, mice, monitors, and oth
 
 Employees browse available products, create requisition requests, and track order status.
 
+## Setup with uv
+
+1. Install `uv` if you do not already have it: <https://docs.astral.sh/uv/getting-started/installation/>
+2. Create and sync the virtual environment:
+
+```bash
+uv sync
+```
+
+3. Activate the environment if you want to run commands manually:
+
+```bash
+source .venv/bin/activate
+```
+
+4. Start the app or run project commands with `uv run`, for example:
+
+```bash
+uv run python main.py
+```
+
 ## Build and publish to a k3d registry
 
 `longlink build` now performs a full container build flow for this sample:
