@@ -1,9 +1,9 @@
-## Architecture
+# AGENTS Instructions
 
-You are working on a LongLink application. LongLink
+You are working on a LongLink application.
 
 ```
-├── app/
+├── src/
 │   ├── models/       # SQLAlchemy models
 │   ├── routes/       # FastAPI routes
 │   ├── types/        # Pydantic types

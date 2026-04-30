@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "sampleapp"
-version = "0.1.0"
-description = "Sample LongLink application package."
+name = "longlink-sample"
+version = "0.0.0"
+description = "Sample LongLink application."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
