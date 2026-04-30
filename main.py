@@ -1,0 +1,15 @@
+from src.api import routers
+from src.envs import env
+from longlink import LongLink
+
+app = LongLink(env=env)
+
+# Register routers
+for router in routers:
+    app.include_router(router)
+
+
+# Register pages
+app.include_page("/pages/cart.xml")
+app.include_page("/pages/dashboard.xml")
+app.include_page("/pages/settings.xml")
