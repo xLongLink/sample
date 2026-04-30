@@ -1,6 +1,5 @@
 from enum import Enum
 from longlink import Table
-from pydantic import EmailStr
 
 
 class StatusEnum(str, Enum):
@@ -12,5 +11,5 @@ class StatusEnum(str, Enum):
 class Contract(Table):
     name: str
     company: str
-    email: EmailStr
+    email: str
     status: StatusEnum
