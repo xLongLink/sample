@@ -6,6 +6,24 @@
 
 <br />
 
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -e .
+```
+
+Start the app in development mode:
+
+```bash
+longlink dev
+```
+
+Build the application using docker:
+
+```bash
+longlink build
+```
+
 ## Setup with uv
 
 ```bash
@@ -30,7 +48,6 @@ uv run longlink build
 
 - Add `ruff` for linting and formatting
 - Add `mypy` or `pyright` for type checking
-- Add a dependency lockfile for reproducible installs
 - Add pre-commit hooks for local automation
 - Add CI for tests, linting, and type checks
 - Add coverage reporting and a test matrix
