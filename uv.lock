@@ -207,7 +207,7 @@ wheels = [
 
 [[package]]
 name = "longlink"
-version = "0.0.5"
+version = "0.0.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "alembic" },
@@ -221,9 +221,9 @@ dependencies = [
     { name = "uvicorn" },
     { name = "xmltodict" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e0/a9/55a7b67862df89675177c9929085df1cd1f052f2afba2892c41ba52f06f7/longlink-0.0.5.tar.gz", hash = "sha256:35d0fe5ab40d47498da473c16a99d6ea1590e3328dd10583599ab49bc982c45d", size = 82848, upload-time = "2026-04-30T12:04:49.456Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/41/3e/3de399c574cda63f2afa070acb06bf8c144d366902aad362dcb12c550909/longlink-0.0.6.tar.gz", hash = "sha256:87b7aa42b53019b069759b66e3a1be080c311091e85baf5306cc22c59db0a97d", size = 800476, upload-time = "2026-05-01T09:27:25.051Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/53/04/786eba7fc503df27a02ce093475aee2b7871b4ea2bceaf4ddddcad66ace3/longlink-0.0.5-py3-none-any.whl", hash = "sha256:7952815e8fafb9efba28c4d568323105ed6ceeef683e7718c90a346e165d4231", size = 24432, upload-time = "2026-04-30T12:04:47.874Z" },
+    { url = "https://files.pythonhosted.org/packages/4c/fd/af23cf6756ec55b2d627c91991e0fe393ce35807cfdeeae7ee76cb186400/longlink-0.0.6-py3-none-any.whl", hash = "sha256:d20d6c281a533f24c54fc6a4c34b7cb38492301d65f2550fc1c0ecff7e851ecf", size = 1376519, upload-time = "2026-05-01T09:27:23.014Z" },
 ]
 
 [[package]]
