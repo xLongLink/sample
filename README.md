@@ -24,7 +24,9 @@ Build the application using docker:
 longlink build
 ```
 
-## Setup with uv
+<br />
+
+## Setup with uv (preferred)
 
 ```bash
 uv sync 
@@ -43,6 +45,8 @@ Build the application using docker:
 ```bash
 uv run longlink build
 ```
+
+<br />
 
 ## TODO
 
