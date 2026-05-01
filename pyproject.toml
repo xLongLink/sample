@@ -21,6 +21,13 @@ dev = [
   "isort"
 ]
 
+[dependency-groups]
+dev = [
+  "pytest",
+  "pytest-asyncio",
+  "isort"
+]
+
 
 [tool.hatch.build.targets.wheel]
 packages = ["app"]
@@ -35,6 +42,9 @@ include = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+
+[tool.uv]
+default-groups = ["dev"]
 
 [tool.longlink]
 
