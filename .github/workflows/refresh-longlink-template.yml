@@ -1,0 +1,39 @@
+name: Refresh LongLink Template
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    name: Run longlink init
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Refresh generated template
+        run: uvx longlink init --folder . --ci github
+
+      - name: Open pull request for changes
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: longlink/init-refresh
+          delete-branch: true
+          title: Refresh LongLink template
+          commit-message: Refresh LongLink template
+          body: |
+            Regenerated this repository with:
+
+            ```sh
+            uvx longlink init --folder . --ci github
+            ```
+
+            This pull request is only opened when the command produces changes.

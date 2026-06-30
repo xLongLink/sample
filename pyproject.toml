@@ -1,0 +1,22 @@
+[project]
+name = "longlink-app"
+version = "0.0.0"
+description = "Minimal LongLink showcase application."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "longlink",
+]
+
+[dependency-groups]
+dev = [
+  "pytest",
+  "pytest-asyncio",
+  "isort",
+]
+
+[tool.isort]
+from_first = false
+no_sections = true
+lines_between_types = 0
+length_sort = true
