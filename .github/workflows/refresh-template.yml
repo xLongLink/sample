@@ -14,16 +14,16 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v8.2.0
 
       - name: Refresh generated template
-        run: uvx --python 3.14 "longlink>=0.1.38" init --folder . --ci github
+        run: uvx --python 3.14 "longlink>=0.1.38" init --folder .
 
       - name: Open pull request for changes
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: longlink/init-refresh
           delete-branch: true
@@ -33,7 +33,7 @@ jobs:
             Regenerated this repository with:
 
             ```sh
-            uvx --python 3.14 "longlink>=0.1.38" init --folder . --ci github
+            uvx --python 3.14 "longlink>=0.1.38" init --folder .
             ```
 
             This pull request is only opened when the command produces changes.
