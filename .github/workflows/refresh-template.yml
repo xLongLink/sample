@@ -3,7 +3,7 @@ name: Refresh Template
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 0"
+    - cron: "0 0 * * *"
 
 permissions:
   contents: write
@@ -22,7 +22,7 @@ jobs:
         uses: astral-sh/setup-uv@v8.2.0
 
       - name: Refresh generated template
-        run: uvx --python 3.14 "longlink>=0.1.38" init --folder .
+        run: uvx init --folder .
 
       - name: Open pull request for changes
         uses: peter-evans/create-pull-request@v8
@@ -35,7 +35,7 @@ jobs:
             Regenerated this repository with:
 
             ```sh
-            uvx --python 3.14 "longlink>=0.1.38" init --folder .
+            uvx init --folder .
             ```
 
             This pull request is only opened when the command produces changes.
