@@ -5,6 +5,7 @@ You are working on a LongLink application.
 - Keep changes small and clear.
 - Remove obsolete code when replacing old flows.
 - Use built-in types for type hints list, dict
+- Sort the imports by length, starting with import and then from
 - Use | for union types instead of Optional
 - All Python functions must include docstring (""" ... """) immediately after definition.
 - Any non-trivial Python logic block must have standalone inline comment (# ...) above block.
@@ -13,20 +14,16 @@ You are working on a LongLink application.
 - Create a function when it gives you a meaningful abstraction boundary. Do not create one just to “split code”.
 - Keep improving and cleanup the repository so that it follows the described architecture
 - Make sure that the repository is self-contained and portable
-- Let fastapi manage the validation, use `response_model`
-
 
 ## Code structure
 
 ```
 ├── src/
-│   ├── database/     # SQLModel application data layer
-│   │   ├── models/   # SQLModel application tables
-│   │   └── services/ # Database utility services
-│   ├── i18n/         # Translation catalogs registered automatically under /i18n
-│   ├── pages/        # XML pages registered automatically under /pages
-│   ├── routes/       # API route registration
-│   ├── schemas/      # Pydantic request and response schemas
+│   ├── models/       # SQLAlchemy models
+│   ├── pages/        # Page definitions (LongLink XML format)
+│   ├── routes/       # Route registration
+│   ├── services/     # Database utilitiy Services
+│   ├── types/        # Pydantic types the responses
 │   ├── envs.py       # Environment and settings helpers
 │   └── router.py     # Application router definition
 │
