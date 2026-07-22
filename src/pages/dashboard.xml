@@ -1,5 +1,8 @@
 <?xml-model href="https://longlink.dev/docs/schema.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
-<longlink>
-  <P>Minimal showcase dashboard.</P>
-  <Button>Refresh Data</Button>
+<longlink name="Dashboard" icon="layout-dashboard">
+  <Stack gap="3">
+    <Heading level="1" i18n="dashboard.title" />
+    <Text as="p" i18n="dashboard.description" />
+    <Button i18n="dashboard.refresh" />
+  </Stack>
 </longlink>

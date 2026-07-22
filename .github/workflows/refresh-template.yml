@@ -22,7 +22,13 @@ jobs:
         uses: astral-sh/setup-uv@v8.2.0
 
       - name: Refresh generated template
-        run: uvx init --folder .
+        run: |
+          target="$(mktemp -d)"
+          uvx --python 3.14 longlink init --folder "$target" --ci github
+          rsync --archive --delete \
+            --exclude ".git/" \
+            --exclude ".github/workflows/refresh-template.yml" \
+            "$target/" ./
 
       - name: Open pull request for changes
         uses: peter-evans/create-pull-request@v8
@@ -35,7 +41,7 @@ jobs:
             Regenerated this repository with:
 
             ```sh
-            uvx init --folder .
+            uvx --python 3.14 longlink init --folder <temporary-folder> --ci github
             ```
 
             This pull request is only opened when the command produces changes.

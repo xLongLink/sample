@@ -16,4 +16,4 @@ def test_sample_endpoint_returns_initial_payload() -> None:
     assert payload["message"] == "Sample GET endpoint received data"
     assert payload["required"] == "required"
     assert payload["optional"] == "optional"
-    assert payload["filesystem_type"] == "Storage"
+    assert payload["filesystem_type"] == "MemoryFileSystem"

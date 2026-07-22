@@ -1,10 +1,13 @@
-from longlink import db
+from typing import ClassVar
+from longlink import Table
 from sqlmodel import Field
 
 
-class Project(db.Table):
+class Project(Table, table=True):
     """Minimal project table used by the showcase route."""
 
-    id: str = Field(description="Unique project identifier")
+    __tablename__: ClassVar[str] = "projects"
+
+    id: str = Field(primary_key=True, description="Unique project identifier")
     name: str = Field(description="Project name")
     owner: str = Field(description="Project owner name or ID")
