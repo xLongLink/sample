@@ -27,7 +27,7 @@ jobs:
           uvx --python 3.14 longlink init --folder "$target" --ci github
           rsync --archive --delete \
             --exclude ".git/" \
-            --exclude ".github/workflows/refresh-template.yml" \
+            --exclude ".github/" \
             "$target/" ./
 
       - name: Open pull request for changes
