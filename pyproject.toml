@@ -1,11 +1,12 @@
 [project]
 name = "longlink-app"
 version = "0.0.0"
-description = "Minimal LongLink showcase application."
+description = "Minimal LongLink office operations application."
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.12"
 dependencies = [
   "longlink",
+  "python-multipart",
 ]
 
 [tool.longlink]
@@ -15,6 +16,7 @@ environment = "src.envs:Env"
 dev = [
   "pytest",
   "pytest-asyncio",
+  "httpx2>=2.9.1",
   "isort",
 ]
 

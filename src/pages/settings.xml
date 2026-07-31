@@ -1,0 +1,119 @@
+<?xml-model href="https://longlink.dev/docs/schema.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<longlink name="Settings" icon="settings-2">
+    <State id="profile" owner="Operations Desk" costCenter="OPS-100" note="Approve standard equipment within the monthly budget." />
+    <State id="reviewer" name="Mira Tanner" initials="MT" badge="Approver" avatarUrl="https://api.dicebear.com/9.x/initials/svg?seed=Mira%20Tanner" />
+    <State id="draftLink" label="Vendor quote" />
+    <State id="quickLinks" value='${[]}' />
+    <State id="emailUpdates" value="true" />
+    <State id="notifications" value="true" />
+    <State id="budgetLimit" value="2500" />
+    <State id="workflow" owner="manager" risk="medium" />
+
+    <Stack gap="3">
+        <Heading level="1" i18n="settings.title" />
+        <Text as="p" color="secondary" i18n="settings.description" />
+    </Stack>
+
+    <SideNav label="Settings sections">
+        <SideNavItem value="application" icon="viewColumns" i18n="settings.sections.application">
+            <Stack gap="4">
+                <Heading level="2" i18n="settings.sections.application" />
+                <Text as="p" i18n="settings.application.description" />
+                <Card variant="muted">
+                    <Stack direction="horizontal" align="center" gap="3">
+                        <Avatar src="$reviewer.avatarUrl" name="$reviewer.name" alt="$reviewer.name" size="lg" />
+                        <Stack gap="1">
+                            <Text weight="semibold" i18n="settings.application.reviewer" />
+                            <Text color="secondary" i18n="settings.application.initials" values="${{ initials: reviewer.initials }}" />
+                        </Stack>
+                        <Badge label="$reviewer.badge" variant="info" />
+                    </Stack>
+                </Card>
+                <FormLayout>
+                    <TextInput
+                        i18n="settings.application.owner"
+                        description="This state is bound directly from XML."
+                        value="$profile.owner"
+                    />
+                    <TextInput i18n="settings.application.costCenter" value="$profile.costCenter" />
+                    <TextArea
+                        i18n="settings.application.note"
+                        description="Visible to reviewers"
+                        rows="4"
+                        value="$profile.note"
+                    />
+                </FormLayout>
+                <Divider />
+                <Heading level="3" i18n="settings.application.runbook" />
+                <Text as="p" i18n="settings.application.bold" weight="semibold" />
+                <Code i18n="settings.application.code" />
+            </Stack>
+        </SideNavItem>
+
+        <SideNavItem value="preferences" icon="wrench" i18n="settings.sections.preferences">
+            <Stack gap="4">
+                <Heading level="2" i18n="settings.sections.preferences" />
+                <Text as="p" i18n="settings.preferences.description" />
+                <FormLayout>
+                    <CheckboxInput
+                        i18n="settings.preferences.email"
+                        description="Send a digest when request status changes."
+                        value="$emailUpdates"
+                    />
+                    <Switch
+                        i18n="settings.preferences.notifications"
+                        description="Show reminders for stale requests."
+                        value="$notifications"
+                    />
+                    <Slider i18n="settings.preferences.limit" min="500" max="10000" step="500" value="$budgetLimit" />
+                </FormLayout>
+                <Text i18n="settings.preferences.limitValue" values="${{ limit: budgetLimit.value }}" />
+            </Stack>
+        </SideNavItem>
+
+        <SideNavItem value="workflow" icon="arrowsUpDown" i18n="settings.sections.workflow">
+            <Stack gap="4">
+                <Heading level="2" i18n="settings.sections.workflow" />
+                <Text as="p" i18n="settings.workflow.description" />
+                <FormLayout>
+                    <RadioList i18n="settings.workflow.owner" value="$workflow.owner">
+                        <RadioListItem value="manager" i18n="settings.workflow.manager" />
+                        <RadioListItem value="finance" i18n="settings.workflow.finance" />
+                        <RadioListItem value="owner" i18n="settings.workflow.ownerRole" />
+                    </RadioList>
+                    <Selector i18n="settings.workflow.risk" value="$workflow.risk">
+                        <SelectorOption value="low" i18n="settings.workflow.low" />
+                        <SelectorOption value="medium" i18n="settings.workflow.medium" />
+                        <SelectorOption value="high" i18n="settings.workflow.high" />
+                    </Selector>
+                </FormLayout>
+            </Stack>
+        </SideNavItem>
+
+        <SideNavItem value="links" icon="externalLink" i18n="settings.sections.links">
+            <Stack gap="4">
+                <Heading level="2" i18n="settings.sections.links" />
+                <Text as="p" i18n="settings.links.description" />
+                <TextInput i18n="settings.links.label" value="$draftLink.label" />
+                <ButtonGroup i18n="settings.links.actions">
+                    <Button
+                        append="${'quickLinks.value'}"
+                        item="${{ label: draftLink.label }}"
+                        isDisabled="${draftLink.label in ['']}"
+                        variant="primary"
+                        i18n="settings.links.add"
+                    />
+                    <Action invalidate='${["quickLinks"]}'>
+                        <Button i18n="settings.links.reset" />
+                    </Action>
+                </ButtonGroup>
+                <Text if="${quickLinks.value.length in [0]}" i18n="settings.links.empty" />
+                <Stack direction="horizontal" wrap="wrap" gap="2">
+                    <For each="$quickLinks.value" as="link">
+                        <Badge label="$link.label" />
+                    </For>
+                </Stack>
+            </Stack>
+        </SideNavItem>
+    </SideNav>
+</longlink>

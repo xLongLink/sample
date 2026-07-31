@@ -1,19 +1,17 @@
-from asyncio import run
+from longlink.testing import TestClient
 
 
-def test_sample_endpoint_returns_initial_payload() -> None:
-    """Load the scaffolded application and run its starter sample endpoint."""
+def test_healthcheck_returns_ok_payload() -> None:
+    """Return the LongLink runtime health payload."""
 
     # Arrange
     from main import app
-    from src.routes.sample import sample_get_endpoint
+
+    client = TestClient(app)
 
     # Act
-    payload = run(sample_get_endpoint())
+    response = client.get("/health")
 
     # Assert
-    assert app is not None
-    assert payload["message"] == "Sample GET endpoint received data"
-    assert payload["required"] == "required"
-    assert payload["optional"] == "optional"
-    assert payload["filesystem_type"] == "MemoryFileSystem"
+    assert response.status_code == 200
+    assert response.json() == {"ok": True}
