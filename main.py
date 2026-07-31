@@ -1,7 +1,8 @@
-from longlink import LongLink, create_engine
-from src.routes import sample
+from longlink import LongLink
+from src.routes import assets, requests
 from src.resources import env
 
-create_engine(env)
+# Build the LongLink application and register its API routes.
 app = LongLink(env=env)
-app.include_router(sample.router)
+app.include_router(assets.router)
+app.include_router(requests.router)
