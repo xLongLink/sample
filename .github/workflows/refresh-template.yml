@@ -23,7 +23,9 @@ jobs:
 
       - name: Refresh generated template
         run: |
-          target="$(mktemp -d)"
+          temporary_directory="$(mktemp -d)"
+          target="$temporary_directory/template"
+          trap 'rm -rf "$temporary_directory"' EXIT
           uvx --python 3.14 longlink init --folder "$target" --ci github
           rsync --archive --delete \
             --exclude ".git/" \
