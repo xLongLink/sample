@@ -1,0 +1,32 @@
+<?xml-model href="https://longlink.dev/docs/schema.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<longlink name="Items" icon="package">
+    <Query id="item" path="/api/items/${params.item}" />
+    <Query id="attachments" path="/api/items/${params.item}/attachments" />
+    <State id="attachment" file="${null}" />
+
+    <Stack direction="horizontal" justify="between" align="center" wrap="wrap">
+        <Stack>
+            <Heading level="3">$item.name</Heading>
+            ${`CHF ${item.price}`}
+        </Stack>
+        <Dialog title="Attachments" triggerLabel="Upload attachment" purpose="form">
+            <Stack>
+                <FileInput label="Attachment" value="$attachment.file" />
+                <Action>
+                    <Request
+                        url="/api/items/${params.item}/attachments"
+                        method="POST"
+                        closeDialog="true"
+                        form="${{ file: attachment.file }}"
+                    />
+                    <Patch state="attachments" invalidate="true" />
+                    <Button variant="primary">Upload attachment</Button>
+                </Action>
+            </Stack>
+        </Dialog>
+    </Stack>
+
+    <Table data="$attachments" idKey="id">
+        <TableColumn field="name" header="File" />
+    </Table>
+</longlink>
