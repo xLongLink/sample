@@ -1,0 +1,36 @@
+[project]
+name = "sample"
+version = "v0.3.10"
+description = "Minimal LongLink office operations Solution."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "alembic",
+  "fastapi",
+  "longlink==0.3.10",
+  "pydantic",
+  "python-multipart",
+  "sqlalchemy",
+  "sqlmodel",
+]
+
+[tool.longlink]
+environment = "src.envs:Env"
+
+[dependency-groups]
+dev = [
+  "httpx2",
+  "pytest",
+  "ruff",
+]
+
+[tool.ruff.lint]
+preview = true
+select = ["I", "ANN401", "B006", "E302", "E305", "DTZ", "FAST003", "PGH003", "RUF100", "S324", "S506"]
+
+[tool.ruff.lint.isort]
+no-sections = true
+length-sort = true
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
