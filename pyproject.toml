@@ -1,0 +1,36 @@
+[project]
+name = "sample"
+version = "v0.5.4"
+description = "Minimal LongLink invoice tracking Solution."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "alembic",
+  "fastapi",
+  "longlink==0.5.4",
+  "pydantic",
+  "python-multipart",
+  "sqlalchemy",
+  "sqlmodel",
+]
+
+[tool.longlink]
+environments = "src.envs:Env"
+
+[dependency-groups]
+dev = [
+  "httpx2",
+  "pytest",
+  "ruff",
+]
+
+[tool.ruff.lint]
+preview = true
+select = ["I", "ANN401", "B006", "E302", "E305", "DTZ", "FAST003", "PGH003", "RUF100", "S324", "S506"]
+
+[tool.ruff.lint.isort]
+no-sections = true
+length-sort = true
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
