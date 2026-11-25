@@ -1,0 +1,41 @@
+[project]
+name = "sample"
+version = "v0.10.2"
+description = "LongLink sample Solution."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "alembic",
+  "fastapi",
+  "longlink==0.10.2",
+  "pydantic",
+  "python-multipart",
+  "sqlalchemy",
+  "sqlmodel",
+]
+
+[tool.longlink]
+banner = "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&h=400&q=85"
+environments = "src.envs:Env"
+
+[dependency-groups]
+dev = [
+  "httpx2",
+  "pytest",
+  "ruff",
+]
+
+[tool.ruff.format]
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint]
+preview = true
+select = ["I", "ANN401", "B006", "E302", "E305", "DTZ", "PGH003", "RUF100", "S324", "S506"]
+
+[tool.ruff.lint.isort]
+no-sections = true
+length-sort = true
+split-on-trailing-comma = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
